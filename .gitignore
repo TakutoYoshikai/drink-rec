@@ -1,0 +1,6 @@
+resized/*
+images/*
+cut/*
+*.json
+
+!.gitkeep
