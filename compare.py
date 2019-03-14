@@ -3,8 +3,6 @@ import os
 import sys
 from statistics import mean
 
-target_img_path = "./comp2.jpg"
-comparing_img_path = "./comp1.jpg"
 
 def compare(target_img_path, comparing_img_path):
     target_img = cv2.imread(target_img_path)
@@ -19,5 +17,3 @@ def compare(target_img_path, comparing_img_path):
         tmp.append(cv2.compareHist(target_hist, comparing_hist, 0))
     return mean(tmp)
 
-print(compare(target_img_path, comparing_img_path))
-print(compare(target_img_path, "./comp3.jpg"))

@@ -1,5 +1,7 @@
 import json
 from PIL import Image
+import sys
+import glob
 PHOTO_HEIGHT = 400
 
 def is_white(pixel):
@@ -60,21 +62,34 @@ def resize(before, after, width=400, height=400):
     resized_img.save(after, "jpeg", quality=100)
 
 
-def load_json(file_path):
-    with open(file_path) as f:
-        jsn = json.load(f)
-        for item in jsn:
-            img_url = item["img"]
-            title = item["title"]
-            img_filename = title + ".jpg"
-            img_path_from = "./images/" + img_filename
-            img_path_to = "./cut/" + img_filename
-            try:
-                cut_white_area(img_path_from, img_path_to)
-            except:
-                continue
-            img_path_from = img_path_to
-            img_path_to = "./resized/" + img_filename
-            resize(img_path_from, img_path_to)
 
-load_json("./coffee.json")
+def load_jsons(file_paths):
+    result = []
+    for file_path in file_paths:
+        with open(file_path) as f:
+            jsn = json.load(f)
+            for item in jsn:
+                img_url = item["img"]
+                title = item["title"]
+                img_filename = title + ".jpg"
+                img_path_from = "./images/" + img_filename
+                img_path_to = "./cut/" + img_filename
+                try:
+                    cut_white_area(img_path_from, img_path_to)
+                except:
+                    continue
+                img_path_from = img_path_to
+                img_path_to = "./resized/" + img_filename
+                resize(img_path_from, img_path_to)
+                result.append(item)
+                result[-1]["image_path"] = img_path_to
+    save(result, "data")
+
+def save(jsn, name):
+    f = open(name + ".json", "w")
+    json.dump(jsn, f, indent=2, ensure_ascii=False)
+
+json_paths = glob.glob("jsons/*.json")
+load_jsons(json_paths)
+
+

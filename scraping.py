@@ -51,7 +51,7 @@ def get_drinks(genre_url):
 
 def save(drinks, name):
     result = list(map(lambda x: { "title": x.title, "img": x.img_url, "materials": x.materials}, drinks))
-    f = open(name + ".json", "w")
+    f = open("jsons/" + name + ".json", "w")
     json.dump(result, f, indent=2, ensure_ascii=False)
     
 def download_image(url, dst_path):
