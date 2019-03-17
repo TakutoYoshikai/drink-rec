@@ -71,9 +71,11 @@ def load_json(file_path):
             title = item["title"]
             download_image(img_url, "./images/" + title + ".jpg")
 
-#load_json("./coffee.json")
-genres = get_drink_genres(url)
+#load_json("./jsons/tea.json")
+genres = get_drink_genres("https://products.suntory.co.jp/0000000014/")
 drinks = []
 for genre in genres:
     drinks.extend(filter(lambda x: x != None, get_drinks(genre.url)))
-save(drinks, "coffee")
+
+save(drinks, "juice")
+load_json("./jsons/juice.json")

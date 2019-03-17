@@ -82,7 +82,7 @@ def load_jsons(file_paths):
                 img_path_to = "./resized/" + img_filename
                 resize(img_path_from, img_path_to)
                 result.append(item)
-                result[-1]["image_path"] = img_path_to
+                result[-1]["image_path"] = img_path_from
     save(result, "data")
 
 def save(jsn, name):

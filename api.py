@@ -1,3 +1,4 @@
+#ヒストグラム比較
 from compare import compare, compare_using_cache
 import falcon
 import io
@@ -11,6 +12,7 @@ image_hists = {}
 jsn = None
 def add_image_hists(title, img_path):
     comparing_img = cv2.imread(img_path)
+    comparing_img = cv2.cvtColor(comparing_img, cv2.COLOR_BGR2HSV)
     channels = (0, 1, 2)
     hist_size = 256
     ranges = (0, 256)
@@ -56,7 +58,7 @@ class DrinkRecAPI(object):
         data = req.get_param("file").file.read()
         pil_img = Image.open(io.BytesIO(data))
         target_img = np.asarray(pil_img)
-        target_img = cv2.cvtColor(target_img, cv2.COLOR_BGR2RGB)
+        target_img = cv2.cvtColor(target_img, cv2.COLOR_RGB2HSV)
         scores = {}
         for title in image_hists:
             scores[title] = compare_using_cache(target_img, image_hists[title])
