@@ -36,7 +36,7 @@ def get_drink(url):
     material_ele = soup.find(id="detail").findAll("td")
     if len(material_ele) == 0:
         return None
-    materials = soup.find(id="detail").findAll("td")[0].get_text().split("、")
+    materials = soup.find(id="detail").findAll("td")[0].get_text().replace("（", "").replace("）", "").split("、")
     img_url = soup.find(id="mainImg").find("img").get("src")
     return Drink(title, url, img_url, materials)
 def get_drinks(genre_url):
