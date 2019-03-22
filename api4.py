@@ -1,5 +1,4 @@
 #テンプレートマッチング
-from compare import compare, compare_using_cache
 import falcon
 import io
 import json

@@ -1,5 +1,4 @@
-#テンプレートマッチング
-from compare import compare, compare_using_cache
+#テンプレートマッチング(種類を絞る）
 import falcon
 import io
 import json
