@@ -3,6 +3,5 @@ images/*
 cut/*
 __pycache__
 *.json
-*.jpg
 
 !.gitkeep
