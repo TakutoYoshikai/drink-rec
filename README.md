@@ -21,3 +21,5 @@ python image.py
 ```
 gunicorn -b 0.0.0.0:3000 <pythonのファイル名拡張子抜き>:app
 ```
+
+herokuのデプロイ用にドリンク情報と12種類の画像のセットは一時的にgit管理しています
