@@ -34,6 +34,7 @@ def search(target_img, length):
             loc = np.where(result >= threshold)
             if loc[0].shape[0] > 0:
                 top_images.append((title, threshold))
+                break
     print(top_images)
     top_images = sorted(top_images, key=lambda x: x[1])
     top_images = list(reversed(top_images))
