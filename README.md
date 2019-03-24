@@ -4,16 +4,19 @@
 ライブラリをインストール
 ```
 pip install -r requirements.txt
+# python3 -m pip install -r requirements.txt
 ```
 ドリンク情報のスクレイピング（現段階ではサントリーのみ）
 画像とドリンク情報のjsonをダウンロードします
 ```
 python scraping.py
+# python3 scraping.py
 ```
 
 ダウンロードした画像のリサイズ
 ```
 python image.py
+# python3 image.py
 ```
 
 各種apiの起動方法
