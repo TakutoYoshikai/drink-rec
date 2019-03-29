@@ -1,1 +1,1 @@
-web: gunicorn api4_2:app --log-file -
+web: gunicorn template_small_api.py:app --log-file -
