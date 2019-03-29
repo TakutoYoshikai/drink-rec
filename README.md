@@ -26,3 +26,10 @@ gunicorn -b 0.0.0.0:3000 <pythonのファイル名拡張子抜き>:app
 ```
 
 herokuのデプロイ用にドリンク情報と12種類の画像のセットは一時的にgit管理しています
+
+
+curlリクエスト例
+
+
+# curl -X POST http://salty-oasis-25429.herokuapp.com/ -H "Content-Type: multipart/form-data" -F "file=@path/to/imgfile"
+
